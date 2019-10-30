@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 14:19:01 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/14 14:29:29 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:24:53 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,14 @@ void	open_wall_texture(t_var *var)
 	void	*tmp;
 
 	i = 0;
-	var->wall_texture[0] = SDL_LoadBMP("./assets/t1.bmp");
-	var->wall_texture[1] = SDL_LoadBMP("./assets/t2.bmp");
-	var->wall_texture[2] = SDL_LoadBMP("./assets/t3.bmp");
-	var->wall_texture[3] = SDL_LoadBMP("./assets/t4.bmp");
+	if (!(var->wall_texture[0] = SDL_LoadBMP("./assets/t1.bmp")))
+		ft_error(44);
+	if (!(var->wall_texture[1] = SDL_LoadBMP("./assets/t2.bmp")))
+		ft_error(44);
+	if (!(var->wall_texture[2] = SDL_LoadBMP("./assets/t3.bmp")))
+		ft_error(44);
+	if (!(var->wall_texture[3] = SDL_LoadBMP("./assets/t4.bmp")))
+		ft_error(44);
 	while (i < 4)
 	{
 		tmp = var->wall_texture[i]->pixels;

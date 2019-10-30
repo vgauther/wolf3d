@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 14:19:01 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/30 17:38:34 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/10/30 20:00:29 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,8 @@ void free_texture_in_var(t_var *v)
 void quit_free(SDL_Renderer *render, SDL_Window *win, t_var *var, int free_who)
 {
 	free_tab_int(var->m, var->y_max);
-	//if (free_who <= 0)
-		free_texture_in_var(var);
-	//if (free_who <= 1)
-		free_tab_char(var->map);
+	free_texture_in_var(var);
+	free_tab_char(var->map);
 	SDL_DestroyRenderer(render);
 	SDL_DestroyWindow(win);
 	SDL_Quit();
@@ -154,6 +152,7 @@ void is_first_char_zero(char *str)
 	fd = open(str, O_RDONLY);
 	ret = read(fd, buff, 2);
 	buff[ret] = 0;
+	close(fd);
 	if (buff[0] == 0)
 		ft_error(44);
 }
@@ -175,5 +174,6 @@ int		main(int ac, char **av)
 	open_wall_texture(&var);
 	open_img_opt_button(&var);
 	display(&var, &player);
+	close(fd);
 	return (0);
 }

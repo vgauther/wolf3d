@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 18:15:58 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/30 17:11:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:46:20 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	open_img_opt_button_num(t_var *var, int i)
 		str[1] = 0;
 		s1 = ft_strjoin("./assets/op/", str);
 		s = ft_strjoin(s1, ".bmp");
-		var->key_texture[i] = SDL_LoadBMP(s);
+		if (!(var->key_texture[i] = SDL_LoadBMP(s)))
+			quit_free(var->sdl.render, var->sdl.window, var, 0);
 		free(s);
 		free(s1);
 		i++;
@@ -44,7 +45,8 @@ static void	open_img_opt_button_arrow(t_var *var, int i)
 		str[1] = 0;
 		s1 = ft_strjoin("./assets/op/f", str);
 		s = ft_strjoin(s1, ".bmp");
-		var->key_texture[i] = SDL_LoadBMP(s);
+		if (!(var->key_texture[i] = SDL_LoadBMP(s)))
+			quit_free(var->sdl.render, var->sdl.window, var, 0);
 		free(s);
 		free(s1);
 		i++;
@@ -66,15 +68,14 @@ void		open_img_opt_button(t_var *var)
 		s1 = ft_strjoin("./assets/op/", str);
 		s = ft_strjoin(s1, ".bmp");
 		if (!(var->key_texture[i] = SDL_LoadBMP(s)))
-		{
-			ft_putstr("pb");
-			quit_free(var->sdl.render, var->sdl.window, var);
-		}
+			quit_free(var->sdl.render, var->sdl.window, var, 0);
 		i++;
 		free(s);
 		free(s1);
 	}
-	var->key_texture[i] = SDL_LoadBMP("./assets/op/unknown.bmp");
+
+	if (!(var->key_texture[i] = SDL_LoadBMP("./assets/op/unknown.bmp")))
+		ft_error(44);
 	i = open_img_opt_button_num(var, i + 1);
 	open_img_opt_button_arrow(var, i);
 }

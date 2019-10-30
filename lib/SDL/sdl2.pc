@@ -1,6 +1,6 @@
 # sdl pkg-config source file
 
-prefix=/Users/vgauther/vgauther/wolf3d/lib/SDL
+prefix=/Users/vgauther/Desktop/wolf3d/lib/SDL
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
