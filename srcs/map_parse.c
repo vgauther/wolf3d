@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 14:19:01 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/14 14:30:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:56:35 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check_char(char *buff)
 	int i;
 
 	i = 0;
-	if (!(buff[i]))
+	if (buff[i] == 0)
 		return (1);
 	while (buff[i])
 	{

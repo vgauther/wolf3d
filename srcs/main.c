@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 14:19:01 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/14 14:30:09 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:55:21 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,19 @@ void	init_key_move(t_var *var)
 	var->key_id[3] = 18;
 }
 
+void is_first_char_zero(char *str)
+{
+	int fd;
+	int ret;
+	char buff[2];
+
+	fd = open(str, O_RDONLY);
+	ret = read(fd, buff, 2);
+	buff[ret] = 0;
+	if (buff[0] == 0)
+		ft_error(44);
+}
+
 int		main(int ac, char **av)
 {
 	int				fd;
@@ -101,6 +114,7 @@ int		main(int ac, char **av)
 
 	if ((fd = open(av[1], O_RDONLY)) < 0 || ac != 2)
 		ft_error(5);
+	is_first_char_zero(av[1]);
 	ft_init_sdl(&var);
 	init_key_move(&var);
 	parsing_map(fd, &var);
