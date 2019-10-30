@@ -99,10 +99,10 @@ int		main(int ac, char **av)
 	t_var			var;
 	t_player		player;
 
+	if ((fd = open(av[1], O_RDONLY)) < 0 || ac != 2)
+		ft_error(5);
 	ft_init_sdl(&var);
 	init_key_move(&var);
-	if (ac != 2 || (fd = open(av[1], O_RDONLY)) < 0)
-		exit(EXIT_FAILURE);
 	parsing_map(fd, &var);
 	var.m = fill_map_struct(var);
 	player_data_set(&player, &var);
