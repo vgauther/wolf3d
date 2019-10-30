@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 14:19:01 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/30 16:55:21 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:38:34 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,58 @@ int		**fill_map_struct(t_var var)
 		x_x2_y[2]++;
 	}
 	return (map);
+}
+
+void free_tab_char(char **tab)
+{
+	int j;
+
+	j = 0;
+	while (tab[j])
+	{
+		free(tab[j]);
+		j++;
+	}
+	free(tab);
+}
+
+void free_tab_int(int **tab, int hei)
+{
+	int j;
+
+	j = 0;
+	while (hei > j)
+	{
+		free(tab[j]);
+		printf("%s\n", "tea");
+		j++;
+	}
+	free(tab);
+}
+
+void free_texture_in_var(t_var *v)
+{
+	int i;
+
+	i = 0;
+	while (v->key_texture[i])
+	{
+		SDL_FreeSurface(v->key_texture[i]);
+		i++;
+	}
+}
+
+void quit_free(SDL_Renderer *render, SDL_Window *win, t_var *var, int free_who)
+{
+	free_tab_int(var->m, var->y_max);
+	//if (free_who <= 0)
+		free_texture_in_var(var);
+	//if (free_who <= 1)
+		free_tab_char(var->map);
+	SDL_DestroyRenderer(render);
+	SDL_DestroyWindow(win);
+	SDL_Quit();
+	(void)free_who;
 }
 
 void	player_data_set(t_player *player, t_var *var)

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 18:15:58 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/14 13:34:58 by esmoreau         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:11:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,11 @@ void		open_img_opt_button(t_var *var)
 		str[1] = 0;
 		s1 = ft_strjoin("./assets/op/", str);
 		s = ft_strjoin(s1, ".bmp");
-		var->key_texture[i] = SDL_LoadBMP(s);
+		if (!(var->key_texture[i] = SDL_LoadBMP(s)))
+		{
+			ft_putstr("pb");
+			quit_free(var->sdl.render, var->sdl.window, var);
+		}
 		i++;
 		free(s);
 		free(s1);

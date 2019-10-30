@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmoreau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: esmoreau <esmoreau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 15:01:29 by esmoreau          #+#    #+#             */
-/*   Updated: 2019/10/14 15:01:33 by esmoreau         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:33:45 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,7 @@ void			open_img_opt_button(t_var *var);
 void			put_image_opt(t_var *var, int id, SDL_Rect dimensions);
 void			put_image(t_var *var, char *name, SDL_Rect dimensions);
 int				change_texture_key(int nk);
+void 			quit_free(SDL_Renderer *render, SDL_Window *win, t_var *var, int free_who);
+
 
 #endif

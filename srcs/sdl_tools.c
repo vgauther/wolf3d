@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 14:19:01 by vgauther          #+#    #+#             */
-/*   Updated: 2019/10/14 14:29:34 by vgauther         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:03:26 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void		sdl_clean_screen(SDL_Renderer *rend)
 
 void		ft_clean_quit(SDL_Renderer *render, SDL_Window *window)
 {
+
+	printf("%s\n", "cc");
 	SDL_SetRenderDrawColor(render, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(render);
 	SDL_RenderPresent(render);
