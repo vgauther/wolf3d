@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2019/10/31 17:54:07 by vgauther         ###   ########.fr        #
+#    Updated: 2019/11/24 14:25:20 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,9 +114,9 @@ fclean:
 	@make clean
 	@make -C $(LFT_PATH) fclean
 	@rm -f $(NAME)
-	@make -C ./lib sdl_clean
 	@echo "$(RED)[-] Wolf 3D executable cleaned$(END)"
-
+	@rm -rf SDL2-2.0.9
+	@rm -rf libSDL2
 
 fcleanr:
 	@make clean
@@ -126,7 +126,6 @@ fcleanr:
 
 fclean_all:
 	@make fclean
-	@make cllib
 
 clean_o:
 	@rm -f $(NAME)
@@ -139,9 +138,6 @@ re:
 rr:
 	@make fcleanr
 	@make all
-
-clsdl:
-	@make -C ./lib sdl_clean
 
 push:
 	@git add ./srcs/*
